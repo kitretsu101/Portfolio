@@ -1,4 +1,5 @@
 import { Download, MessageCircle } from 'lucide-react';
+import profileImage from '../assets/whatsapp_image_2025-12-12_at_00.00.48_7dc7767b.jpg';
 
 export default function Hero() {
   return (
@@ -41,7 +42,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-red-700 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
             <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-red-500/50 shadow-2xl shadow-red-500/20">
               <img
-                src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src={profileImage}
                 alt="Plabon Barua"
                 className="w-full h-full object-cover"
               />
