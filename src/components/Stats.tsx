@@ -1,17 +1,16 @@
-import { Briefcase, Users, Clock, Award } from 'lucide-react';
+import { Briefcase, Users, Clock } from 'lucide-react';
 
 const stats = [
   { icon: Briefcase, label: 'Projects Completed', value: '150+' },
   { icon: Users, label: 'Happy Clients', value: '80+' },
-  { icon: Clock, label: 'Years Experience', value: '5+' },
-  { icon: Award, label: 'Awards Won', value: '12+' }
+  { icon: Clock, label: 'Years Experience', value: '5+' }
 ];
 
 export default function Stats() {
   return (
     <section id="projects" className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}

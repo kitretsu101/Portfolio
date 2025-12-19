@@ -2,32 +2,18 @@ import { Briefcase, GraduationCap } from 'lucide-react';
 
 const experiences = [
   {
-    type: 'work',
-    title: 'Senior Full-Stack Developer',
-    organization: 'Tech Innovations Inc.',
-    period: '2022 - Present',
-    description: 'Leading development of enterprise-scale applications using React, Node.js, and cloud technologies.'
-  },
-  {
-    type: 'work',
-    title: 'Full-Stack Developer',
-    organization: 'Digital Solutions Ltd.',
-    period: '2020 - 2022',
-    description: 'Developed and maintained multiple client projects, specializing in MERN stack and database optimization.'
-  },
-  {
     type: 'education',
-    title: 'Bachelor of Computer Science',
-    organization: 'State University',
-    period: '2016 - 2020',
-    description: 'Graduated with honors, focusing on software engineering, algorithms, and database systems.'
+    title: 'Bachelor of Science in Computer Science and Engineering',
+    organization: 'Khulna University of Engineering and Technology',
+    period: '2023 - Present',
+    description: 'Currently pursuing a degree in Computer Science and Engineering, focusing on software development, algorithms, and web technologies.'
   },
   {
     type: 'work',
-    title: 'Junior Developer',
-    organization: 'StartUp Hub',
-    period: '2019 - 2020',
-    description: 'Built responsive web applications and collaborated with cross-functional teams on various projects.'
+    title: 'Intern Developer',
+    organization: 'Symbex IT',
+    period: '2025 - 2025',
+    description: 'Developing web applications and gaining practical experience in full-stack development.'
   }
 ];
 
