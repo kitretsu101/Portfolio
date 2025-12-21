@@ -9,6 +9,13 @@ const experiences = [
     description: 'Currently pursuing a degree in Computer Science and Engineering, focusing on software development, algorithms, and web technologies.'
   },
   {
+    type: 'education',
+    title: 'Highest Secondary Education',
+    organization: 'Notre Dame College, Dhaka',
+    period: '2020 - 2022',
+    description: 'Completed higher secondary education at Notre Dame College, Dhaka.'
+  },
+  {
     type: 'work',
     title: 'Intern Developer',
     organization: 'Symbex IT',
