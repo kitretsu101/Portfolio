@@ -1,18 +1,50 @@
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const to = 'dhruboplabon987@gmail.com';
-    const subject = `New contact from ${name || 'Website Visitor'}`;
-    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
-    window.location.href = mailto;
+    if (submitted) return;
+    setSubmitted(true);
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+
+    const templateParams = {
+      from_name: name || 'Website Visitor',
+      from_email: email || 'no-reply@example.com',
+      message: message || '(no message)'
+    };
+
+    // If EmailJS is configured, try sending via EmailJS. Otherwise fall back to mailto.
+    if (serviceId && templateId && publicKey) {
+      emailjs.send(serviceId, templateId, templateParams, publicKey)
+        .then(() => {
+          // leave submitted = true to show confirmation
+        })
+        .catch(() => {
+          // fallback to mail client if EmailJS fails
+          const to = 'dhruboplabon987@gmail.com';
+          const subject = `New contact from ${templateParams.from_name}`;
+          const body = `Name: ${templateParams.from_name}%0D%0AEmail: ${templateParams.from_email}%0D%0A%0D%0AMessage:%0D%0A${templateParams.message}`;
+          const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+          window.location.href = mailto;
+        });
+    } else {
+      const to = 'dhruboplabon987@gmail.com';
+      const subject = `New contact from ${templateParams.from_name}`;
+      const body = `Name: ${templateParams.from_name}%0D%0AEmail: ${templateParams.from_email}%0D%0A%0D%0AMessage:%0D%0A${templateParams.message}`;
+      const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      // small timeout so UI updates to "Submitted"
+      setTimeout(() => window.location.href = mailto, 250);
+    }
   }
 
   return (
@@ -94,10 +126,17 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 flex items-center justify-center gap-2"
+                disabled={submitted}
+                className={`w-full px-8 py-4 ${submitted ? 'bg-green-600' : 'bg-red-500 hover:bg-red-600'} text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 flex items-center justify-center gap-2 ${submitted ? 'opacity-90 cursor-default' : ''}`}
               >
-                <Send size={20} />
-                Send Message
+                {submitted ? (
+                  'Submitted'
+                ) : (
+                  <>
+                    <Send size={20} />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
