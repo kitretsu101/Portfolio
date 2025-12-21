@@ -1,6 +1,20 @@
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const to = 'dhruboplabon987@gmail.com';
+    const subject = `New contact from ${name || 'Website Visitor'}`;
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.location.href = mailto;
+  }
+
   return (
     <section id="contact" className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto">
@@ -47,23 +61,32 @@ export default function Contact() {
           </div>
 
           <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   type="text"
+                  name="name"
                   placeholder="Your Name"
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg focus:outline-none focus:border-red-500 transition-colors duration-300 text-white placeholder-gray-500"
                 />
               </div>
               <div>
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
+                  name="email"
                   placeholder="Your Email"
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg focus:outline-none focus:border-red-500 transition-colors duration-300 text-white placeholder-gray-500"
                 />
               </div>
               <div>
                 <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  name="message"
                   placeholder="Your Message"
                   rows={5}
                   className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg focus:outline-none focus:border-red-500 transition-colors duration-300 text-white placeholder-gray-500 resize-none"
