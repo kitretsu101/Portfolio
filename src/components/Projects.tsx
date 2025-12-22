@@ -6,7 +6,7 @@ import portfolio from '../../project-portfolio.jpg';
 const projects = [
   {
     id: 1,
-    title: 'Leaninx (Educational App)',
+    title: 'Learnix (Educational App)',
     description:
       'A learning app UI/UX design focused on exams, mock tests and performance tracking. Designed screens, flows and onboarding.',
     image: leaninx,

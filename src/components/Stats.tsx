@@ -1,9 +1,9 @@
 import { Briefcase, Users, Clock } from 'lucide-react';
 
 const stats = [
-  { icon: Briefcase, label: 'Projects Completed', value: '150+' },
-  { icon: Users, label: 'Happy Clients', value: '80+' },
-  { icon: Clock, label: 'Years Experience', value: '5+' }
+  { icon: Briefcase, label: 'Projects Completed', value: '60+' },
+  { icon: Users, label: 'Happy Clients', value: '20+' },
+  { icon: Clock, label: 'Years Experience', value: '4+' }
 ];
 
 export default function Stats() {
