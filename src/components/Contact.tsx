@@ -93,7 +93,7 @@ export default function Contact() {
         </div>
 
         <div className="mt-20 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>&copy; 2024 Plabon Barua. All rights reserved.</p>
+          <p>&copy; 2025 Plabon Barua. All rights reserved.</p>
         </div>
       </div>
     </section>
