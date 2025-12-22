@@ -10,7 +10,8 @@ const skills = [
   { name: 'JavaScript', icon: Wrench },
   { name: 'Oracle', icon: Database },
   { name: 'MySQL', icon: Database },
-  { name: 'MongoDB', icon: Layers }
+  { name: 'MongoDB', icon: Layers },
+  { name: 'Data Structures & Algorithms', icon: Binary }
 ];
 
 export default function Skills() {

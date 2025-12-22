@@ -10,7 +10,7 @@ const experiences = [
   },
   {
     type: 'education',
-    title: 'Highest Secondary Education',
+    title: 'Higher Secondary Education',
     organization: 'Notre Dame College, Dhaka',
     period: '2020 - 2022',
     description: 'Completed higher secondary education at Notre Dame College, Dhaka.'
