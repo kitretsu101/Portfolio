@@ -1,37 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import leaninx from '../../project-leaninx.jpg';
-import gaming from '../../project-gaming.jpg';
-import portfolio from '../../project-portfolio.jpg';
-
-const projects = [
-  {
-    id: 1,
-    title: 'Learnix (Educational App)',
-    description:
-      'A learning app UI/UX design focused on exams, mock tests and performance tracking. Designed screens, flows and onboarding.',
-    image: leaninx,
-    tags: ['UI/UX', 'Mobile App', 'Education']
-  },
-  {
-    id: 2,
-    title: 'Gaming Website Home Screen',
-    description:
-      'A bold, immersive hero design for a gaming product — rich visuals, strong typography and interaction-ready CTA.',
-    image: gaming,
-    tags: ['Web', 'Hero', 'Interaction']
-  },
-  {
-    id: 3,
-    title: 'Personal Portfolio',
-    description:
-      'A modern portfolio landing page showcasing identity, services and contact — optimized for conversions.',
-    image: portfolio,
-    tags: ['Portfolio', 'Responsive', 'Branding']
-  }
-];
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import { getFeaturedProjects } from '../data/projectsData';
 
 export default function Projects() {
   const [openImage, setOpenImage] = useState<string | null>(null);
+  const projects = getFeaturedProjects();
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -104,6 +78,17 @@ export default function Projects() {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* See More Button */}
+        <div className="flex justify-center mt-12">
+          <Link
+            to="/projects"
+            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-red-500 text-white font-medium text-lg hover:bg-red-600 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105"
+          >
+            See More Projects
+            <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
 
