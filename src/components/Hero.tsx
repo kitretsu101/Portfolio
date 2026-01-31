@@ -1,20 +1,53 @@
 import { Download, MessageCircle } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 import profileImage from '../assets/whatsapp_image_2025-12-12_at_00.00.48_7dc7767b.jpg';
 
 export default function Hero() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [isNearButton, setIsNearButton] = useState(false);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (buttonRef.current) {
+        const rect = buttonRef.current.getBoundingClientRect();
+        const buttonCenterX = rect.left + rect.width / 2;
+        const buttonCenterY = rect.top + rect.height / 2;
+        const distance = Math.sqrt(
+          Math.pow(e.clientX - buttonCenterX, 2) + Math.pow(e.clientY - buttonCenterY, 2)
+        );
+
+        if (distance < 150) {
+          setIsNearButton(true);
+          const offsetX = (e.clientX - buttonCenterX) * 0.15;
+          const offsetY = (e.clientY - buttonCenterY) * 0.15;
+          setMousePosition({ x: offsetX, y: offsetY });
+        } else {
+          setIsNearButton(false);
+          setMousePosition({ x: 0, y: 0 });
+        }
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+      {/* Mesh Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-transparent to-transparent"></div>
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-crimson-500/5 rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div className="space-y-6 animate-fade-in">
           <div className="space-y-2">
-            <p className="text-gray-400 text-lg">Hello, I'm</p>
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            <p className="text-gray-400 text-lg font-medium">Hello, I'm</p>
+            <h1 className="text-6xl md:text-8xl font-extrabold leading-tight tracking-tight">
               <span className="text-white">Plabon Barua</span>
             </h1>
-            <h2 className="text-3xl md:text-4xl font-bold text-red-500">
+            <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-crimson-600">
               Full-Stack Developer
             </h2>
           </div>
@@ -27,13 +60,19 @@ export default function Hero() {
 
           <div className="flex flex-wrap gap-4 pt-4">
             <button
+              ref={buttonRef}
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group px-8 py-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105 flex items-center gap-2"
+              className="magnetic-button group px-8 py-4 bg-gradient-to-r from-red-500 to-crimson-600 hover:from-red-600 hover:to-crimson-700 text-white font-bold rounded-xl transition-all duration-300 shadow-glow hover:shadow-glow-lg hover:scale-105 flex items-center gap-2"
+              style={{
+                transform: isNearButton
+                  ? `translate(${mousePosition.x}px, ${mousePosition.y}px)`
+                  : 'translate(0, 0)',
+              }}
             >
               <MessageCircle size={20} />
               Hire Me
             </button>
-            <button className="px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300 border border-gray-700 hover:border-red-500 flex items-center gap-2">
+            <button className="px-8 py-4 glass-card glass-card-hover text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 flex items-center gap-2">
               <Download size={20} />
               Download CV
             </button>
@@ -42,12 +81,17 @@ export default function Hero() {
 
         <div className="flex justify-center items-center">
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-red-700 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-            <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-red-500/50 shadow-2xl shadow-red-500/20">
+            {/* Animated Ring */}
+            <div className="absolute inset-0 rounded-full animate-ring-pulse">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500 via-crimson-600 to-red-700 rounded-full blur-2xl opacity-60"></div>
+            </div>
+            {/* Profile Picture */}
+            <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-red-500/50 shadow-glass group-hover:border-red-500 transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <img
                 src={profileImage}
                 alt="Plabon Barua"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover relative z-10"
               />
             </div>
           </div>

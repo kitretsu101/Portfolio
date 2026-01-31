@@ -27,8 +27,8 @@ export default function Projects() {
     <section id="projects" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-3">
-            My <span className="text-red-500">Projects</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-3">
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-crimson-600">Projects</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             A selection of projects showing UI design and web work.
@@ -39,28 +39,27 @@ export default function Projects() {
           {projects.map((p) => (
             <article
               key={p.id}
-              className={
-                'relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900/40 to-gray-900/20 border border-gray-800 shadow-sm'
-              }
+              className="group relative rounded-2xl overflow-hidden glass-card glass-card-hover shadow-glass hover:shadow-glow transition-all duration-300 hover:-translate-y-2"
             >
-              <div className="h-56 md:h-64 bg-gray-800/30 flex items-center justify-center">
+              <div className="h-56 md:h-64 bg-gray-800/30 flex items-center justify-center relative overflow-hidden">
                 <img
                   src={p.image}
                   alt={p.title}
-                  className="object-cover w-full h-full transition-transform duration-500 hover:scale-105 cursor-pointer"
+                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 cursor-pointer"
                   onClick={() => openModal(p.image)}
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
               <div className="p-5">
-                <h3 className="text-xl font-semibold mb-2">{p.title}</h3>
+                <h3 className="text-xl font-bold mb-2">{p.title}</h3>
                 <p className="text-gray-400 text-sm mb-4">{p.description}</p>
 
                 <div className="flex flex-wrap items-center gap-3 mb-4">
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="text-xs bg-red-500/10 text-red-300 px-2 py-1 rounded-full"
+                      className="text-xs bg-gradient-to-r from-red-500/10 to-crimson-600/10 text-red-300 px-2 py-1 rounded-full border border-red-500/20"
                     >
                       {t}
                     </span>
@@ -70,7 +69,7 @@ export default function Projects() {
                 <div className="flex items-center justify-between">
                   <button
                     onClick={() => openModal(p.image)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500 text-white text-sm hover:opacity-90"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-crimson-600 text-white text-sm hover:shadow-glow transition-all duration-300 hover:scale-105 font-semibold"
                   >
                     View
                   </button>
@@ -84,7 +83,7 @@ export default function Projects() {
         <div className="flex justify-center mt-12">
           <Link
             to="/projects"
-            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-red-500 text-white font-medium text-lg hover:bg-red-600 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:scale-105"
+            className="group inline-flex items-center gap-2 px-10 py-5 rounded-xl bg-gradient-to-r from-red-500 to-crimson-600 text-white font-bold text-lg hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
           >
             See More Projects
             <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -94,7 +93,7 @@ export default function Projects() {
 
       {openImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
           onClick={closeModal}
         >
           <div
@@ -103,7 +102,7 @@ export default function Projects() {
           >
             <button
               onClick={closeModal}
-              className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg"
+              className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-gradient-to-r from-red-600 to-crimson-700 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-glow-lg hover:shadow-glow transition-all duration-300 hover:scale-110"
               aria-label="Close"
             >
               ✕

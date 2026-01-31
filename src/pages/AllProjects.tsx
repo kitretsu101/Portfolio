@@ -32,7 +32,7 @@ export default function AllProjects() {
     return (
         <>
             <Navbar />
-            <div className="min-h-screen bg-gray-950 text-white pt-24 pb-20">
+            <div className="min-h-screen bg-navy-950 text-white pt-24 pb-20">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Back Navigation */}
                     <Link
@@ -40,15 +40,15 @@ export default function AllProjects() {
                         className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors duration-300 mb-8 group"
                     >
                         <ArrowLeft size={20} className="transition-transform duration-300 group-hover:-translate-x-1" />
-                        <span>Back to Home</span>
+                        <span className="font-semibold">Back to Home</span>
                     </Link>
 
                     {/* Page Header */}
-                    <div className="text-center mb-12">
-                        <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-                            All <span className="text-red-500">Projects</span>
+                    <div className="text-center mb-12 animate-fade-in">
+                        <h1 className="text-5xl md:text-7xl font-extrabold mb-4">
+                            All <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-crimson-600">Projects</span>
                         </h1>
-                        <p className="text-gray-400 text-lg max-w-2xl mx-auto animate-fade-in">
+                        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
                             A complete collection of my works — exploring design, development, and innovation
                         </p>
                     </div>
@@ -69,7 +69,7 @@ export default function AllProjects() {
                 {/* Image Modal */}
                 {openImage && (
                     <div
-                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
                         onClick={closeModal}
                     >
                         <div
@@ -78,7 +78,7 @@ export default function AllProjects() {
                         >
                             <button
                                 onClick={closeModal}
-                                className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-red-700 transition-colors duration-300"
+                                className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-gradient-to-r from-red-600 to-crimson-700 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-glow-lg hover:shadow-glow transition-all duration-300 hover:scale-110"
                                 aria-label="Close"
                             >
                                 ✕

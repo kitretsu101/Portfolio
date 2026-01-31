@@ -33,8 +33,8 @@ export default function Services() {
     <section id="services" className="py-20 px-6 relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            My <span className="text-red-500">Services</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-crimson-600">Services</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Comprehensive solutions tailored to bring your digital vision to life
@@ -45,10 +45,10 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-red-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/10 hover:-translate-y-2"
+              className="group glass-card glass-card-hover rounded-2xl p-8 transition-all duration-300 hover:shadow-glow hover:scale-[1.02] hover:-translate-y-1"
             >
-              <div className="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-500/20 transition-colors duration-300">
-                <service.icon className="text-red-500" size={28} />
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500/20 to-crimson-600/10 rounded-xl flex items-center justify-center mb-6 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
+                <service.icon className="text-red-500 group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-all duration-300" size={28} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-white">{service.title}</h3>
               <p className="text-gray-400 leading-relaxed">{service.description}</p>
