@@ -62,7 +62,7 @@ export default function Hero() {
             <button
               ref={buttonRef}
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="magnetic-button group px-8 py-4 bg-gradient-to-r from-red-500 to-crimson-600 hover:from-red-600 hover:to-crimson-700 text-white font-bold rounded-xl transition-all duration-300 shadow-glow hover:shadow-glow-lg hover:scale-105 flex items-center gap-2"
+              className="magnetic-button group px-8 py-4 bg-gradient-to-r from-red-500 to-crimson-600 hover:from-red-600 hover:to-crimson-700 text-white font-bold rounded-xl transition-all duration-300 glow-red-strong hover:glow-red-intense hover:scale-105 flex items-center gap-2"
               style={{
                 transform: isNearButton
                   ? `translate(${mousePosition.x}px, ${mousePosition.y}px)`
@@ -81,12 +81,26 @@ export default function Hero() {
 
         <div className="flex justify-center items-center">
           <div className="relative group">
-            {/* Animated Ring */}
+            {/* Double Animated Rings */}
             <div className="absolute inset-0 rounded-full animate-ring-pulse">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500 via-crimson-600 to-red-700 rounded-full blur-2xl opacity-60"></div>
             </div>
-            {/* Profile Picture */}
-            <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-red-500/50 shadow-glass group-hover:border-red-500 transition-all duration-500">
+            <div className="absolute -inset-4 rounded-full animate-double-ring-pulse">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/40 via-crimson-600/40 to-red-700/40 rounded-full blur-3xl"></div>
+            </div>
+
+            {/* Floating UI Connectors */}
+            <div className="absolute -top-4 -right-4 connector-dot animate-float-particle"></div>
+            <div className="absolute top-1/4 -right-8 connector-dot animate-float-particle" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute -bottom-4 -left-4 connector-dot animate-float-particle" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute bottom-1/3 -left-8 connector-dot animate-float-particle" style={{ animationDelay: '0.5s' }}></div>
+
+            {/* Connector Lines */}
+            <div className="absolute top-1/4 -right-8 connector-line animate-connector-glow w-16 rotate-45" style={{ animationDelay: '0.3s' }}></div>
+            <div className="absolute bottom-1/3 -left-8 connector-line animate-connector-glow w-16 -rotate-45" style={{ animationDelay: '0.6s' }}></div>
+
+            {/* Profile Picture with Enhanced Ring */}
+            <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-red-500/60 shadow-glass group-hover:border-red-500 transition-all duration-500 glow-red-intense">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <img
                 src={profileImage}

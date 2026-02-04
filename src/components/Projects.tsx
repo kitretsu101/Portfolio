@@ -39,7 +39,7 @@ export default function Projects() {
           {projects.map((p) => (
             <article
               key={p.id}
-              className="group relative rounded-2xl overflow-hidden glass-card glass-card-hover shadow-glass hover:shadow-glow transition-all duration-300 hover:-translate-y-2"
+              className="group relative rounded-2xl overflow-hidden glass-card-premium glass-card-hover shadow-glass hover:shadow-glow transition-all duration-300 hover:-translate-y-2"
             >
               <div className="h-56 md:h-64 bg-gray-800/30 flex items-center justify-center relative overflow-hidden">
                 <img
@@ -48,7 +48,7 @@ export default function Projects() {
                   className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 cursor-pointer"
                   onClick={() => openModal(p.image)}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-red-900/50 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
               <div className="p-5">
