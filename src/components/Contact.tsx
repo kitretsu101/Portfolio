@@ -56,7 +56,7 @@ export default function Contact() {
             <div className="glass-card-premium rounded-2xl p-8 flex flex-col items-center text-center">
               <div className="mb-4">
                 <h3 className="text-3xl font-bold text-white">Follow Me</h3>
-                <p className="text-gray-400 mt-2">Follow me for updates</p>
+                <p className="text-gray-400 mt-2"></p>
               </div>
 
               <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
