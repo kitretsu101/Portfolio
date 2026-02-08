@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { projectsData } from '../data/projectsData';
-import { ArrowLeft, ExternalLink, Github, Check } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github, Check, ArrowRight } from 'lucide-react';
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
@@ -26,16 +26,23 @@ export default function ProjectDetail() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      {/* Header with back button */}
+      {/* Header with navigation buttons */}
       <div className="bg-gradient-to-b from-gray-900 to-gray-950 border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 hover:bg-gray-800 transition-colors duration-300 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 hover:bg-gray-800 transition-colors duration-300"
           >
             <ArrowLeft size={20} />
             Back
           </button>
+          
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 to-crimson-600 text-white font-semibold hover:shadow-glow transition-all duration-300 hover:scale-105"
+          >
+            Home
+          </Link>
         </div>
       </div>
 
@@ -177,6 +184,17 @@ export default function ProjectDetail() {
                   </div>
                 </Link>
               ))}
+          </div>
+
+          {/* See More Projects Button */}
+          <div className="flex justify-center mt-12">
+            <Link
+              to="/projects"
+              className="group inline-flex items-center gap-2 px-10 py-5 rounded-xl bg-gradient-to-r from-red-500 to-crimson-600 text-white font-bold text-lg hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
+            >
+              See More Projects
+              <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </div>

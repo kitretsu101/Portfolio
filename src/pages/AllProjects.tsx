@@ -34,15 +34,25 @@ export default function AllProjects() {
             <Navbar />
             <div className="min-h-screen bg-navy-950 text-white pt-24 pb-20">
                 <div className="max-w-7xl mx-auto px-6">
-                    {/* Back Navigation */}
-                    <Link
-                        to="/"
-                        className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors duration-300 mb-8 group"
-                    >
-                        <ArrowLeft size={20} className="transition-transform duration-300 group-hover:-translate-x-1" />
-                        <span className="font-semibold">Back to Home</span>
-                    </Link>
+                    {/* Navigation Bar */}
+                    <div className="flex items-center justify-between mb-8">
+                        {/* Back Navigation */}
+                        <Link
+                            to="/"
+                            className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors duration-300 group"
+                        >
+                            <ArrowLeft size={20} className="transition-transform duration-300 group-hover:-translate-x-1" />
+                            <span className="font-semibold">Back to Home</span>
+                        </Link>
 
+                        {/* Home Button */}
+                        <Link
+                            to="/"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 to-crimson-600 text-white font-semibold hover:shadow-glow transition-all duration-300 hover:scale-105"
+                        >
+                            Home
+                        </Link>
+                    </div>
                     {/* Page Header */}
                     <div className="text-center mb-12 animate-fade-in">
                         <h1 className="text-5xl md:text-7xl font-extrabold mb-4">
