@@ -1,3 +1,6 @@
+// CV file path - easy to change if needed
+const CV_FILE = new URL('../../Professional CV Resume.jpg', import.meta.url).href;
+
 import { Download, MessageCircle } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import profileImage from '../assets/whatsapp_image_2025-12-12_at_00.00.48_7dc7767b.jpg';
@@ -72,10 +75,14 @@ export default function Hero() {
               <MessageCircle size={20} />
               Hire Me
             </button>
-            <button className="px-8 py-4 glass-card glass-card-hover text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 flex items-center gap-2">
+            <a
+              href={CV_FILE}
+              download="Professional-CV-Resume"
+              className="px-8 py-4 glass-card glass-card-hover text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 inline-flex"
+            >
               <Download size={20} />
               Download CV
-            </button>
+            </a>
           </div>
         </div>
 
