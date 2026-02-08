@@ -56,12 +56,36 @@ export default function AllProjects() {
                     {/* Projects Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {projects.map((project) => (
-                            <ProjectCard
+                            <Link
                                 key={project.id}
-                                project={project}
-                                onImageClick={openModal}
-                                showButtons={false}
-                            />
+                                to={`/project/${project.id}`}
+                                className="group relative rounded-2xl overflow-hidden glass-card-premium glass-card-hover shadow-glass hover:shadow-glow transition-all duration-300 hover:-translate-y-2"
+                            >
+                                <div className="h-56 md:h-64 bg-gray-800/30 flex items-center justify-center relative overflow-hidden">
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 cursor-pointer"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-red-900/50 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+
+                                <div className="p-5">
+                                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                                    <p className="text-gray-400 text-sm mb-4">{project.description}</p>
+
+                                    <div className="flex flex-wrap items-center gap-2">
+                                        {project.tags.map((t) => (
+                                            <span
+                                                key={t}
+                                                className="text-xs bg-gradient-to-r from-red-500/10 to-crimson-600/10 text-red-300 px-2 py-1 rounded-full border border-red-500/20"
+                                            >
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

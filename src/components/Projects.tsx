@@ -67,12 +67,12 @@ export default function Projects() {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <button
-                    onClick={() => openModal(p.image)}
+                  <Link
+                    to={`/project/${p.id}`}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-crimson-600 text-white text-sm hover:shadow-glow transition-all duration-300 hover:scale-105 font-semibold"
                   >
                     View
-                  </button>
+                  </Link>
                 </div>
               </div>
             </article>

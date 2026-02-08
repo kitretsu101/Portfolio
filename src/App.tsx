@@ -8,6 +8,7 @@ import Resume from './components/Resume';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import AllProjects from './pages/AllProjects';
+import ProjectDetail from './pages/ProjectDetail';
 
 function HomePage() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<AllProjects />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
       </Routes>
     </div>
   );

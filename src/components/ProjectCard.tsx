@@ -1,4 +1,5 @@
 import { ExternalLink, Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Project } from '../data/projectsData';
 
 interface ProjectCardProps {
@@ -40,18 +41,12 @@ export default function ProjectCard({ project, onImageClick, showButtons = true 
 
                 {showButtons && (
                     <div className="flex items-center gap-3">
-                        <a
-                            href={project.liveDemo}
+                        <Link
+                            to={`/project/${project.id}`}
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-crimson-600 text-white text-sm hover:shadow-glow transition-all duration-300 hover:scale-105 font-semibold"
-                            onClick={(e) => {
-                                if (project.liveDemo === '#') {
-                                    e.preventDefault();
-                                }
-                            }}
                         >
-                            <ExternalLink size={16} />
-                            Live Demo
-                        </a>
+                            View
+                        </Link>
                         <a
                             href={project.sourceCode}
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-card glass-card-hover text-gray-300 text-sm transition-all duration-300 hover:scale-105 font-semibold"
