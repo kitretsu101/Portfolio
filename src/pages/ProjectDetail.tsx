@@ -90,30 +90,6 @@ export default function ProjectDetail() {
                 ))}
               </div>
             </div>
-
-            {/* Buttons Section */}
-            <div className="flex flex-wrap gap-4 pt-6">
-              <a
-                href={project.liveDemo}
-                onClick={(e) => {
-                  if (project.liveDemo === '#') e.preventDefault();
-                }}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-red-500 to-crimson-600 text-white font-bold hover:shadow-glow transition-all duration-300 hover:scale-105"
-              >
-                <ExternalLink size={20} />
-                View Live Demo
-              </a>
-              <a
-                href={project.sourceCode}
-                onClick={(e) => {
-                  if (project.sourceCode === '#') e.preventDefault();
-                }}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl glass-card glass-card-hover text-gray-300 font-bold transition-all duration-300 hover:scale-105"
-              >
-                <Github size={20} />
-                Source Code
-              </a>
-            </div>
           </div>
 
           {/* Right Column - Image */}
