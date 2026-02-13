@@ -1,17 +1,37 @@
-import { Code2, Braces, Coffee, FileCode, Globe, Palette, Wrench, Database, Layers } from 'lucide-react';
+import { Code2, Braces, Coffee, FileCode, Database, GitBranch, Box, Zap } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
-const skills = [
-  { name: 'React', icon: Code2, color: 'blue' },
-  { name: 'Node.js', icon: Braces, color: 'red' },
-  { name: 'JavaScript', icon: FileCode, color: 'red' },
-  { name: 'Python', icon: Coffee, color: 'red' },
-  { name: 'Docker', icon: Globe, color: 'blue' },
-  { name: 'Firebase', icon: Palette, color: 'red' },
-  { name: 'MongoDB', icon: Database, color: 'red' },
-  { name: 'MySQL', icon: Database, color: 'red' },
-  { name: 'C++', icon: Wrench, color: 'red' },
-  { name: 'Git', icon: Layers, color: 'red' },
+const skillCategories = [
+  {
+    title: 'Programming Languages',
+    skills: [
+      { name: 'JavaScript', icon: FileCode },
+      { name: 'C++', icon: Code2 },
+      { name: 'Python', icon: Coffee },
+    ],
+  },
+  {
+    title: 'Frameworks & Libraries',
+    skills: [
+      { name: 'React', icon: Code2 },
+      { name: 'Node.js', icon: Braces },
+    ],
+  },
+  {
+    title: 'Databases',
+    skills: [
+      { name: 'MongoDB', icon: Database },
+      { name: 'MySQL', icon: Database },
+      { name: 'Firebase', icon: Zap },
+    ],
+  },
+  {
+    title: 'Tools & Technologies',
+    skills: [
+      { name: 'Git', icon: GitBranch },
+      { name: 'Docker', icon: Box },
+    ],
+  },
 ];
 
 export default function Skills() {
@@ -53,17 +73,30 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {skills.map((skill, index) => (
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${isVisible ? 'scroll-reveal revealed' : 'scroll-reveal'}`}>
+          {skillCategories.map((category, categoryIndex) => (
             <div
-              key={index}
-              className={`group glass-card-premium glass-card-hover rounded-2xl p-6 transition-all duration-300 hover:shadow-glow hover:-translate-y-2 flex flex-col items-center justify-center gap-4 ${isVisible ? `scroll-reveal revealed stagger-${Math.min(index + 1, 8)}` : 'scroll-reveal'
-                }`}
+              key={categoryIndex}
+              className={`group glass-card-premium rounded-2xl p-8 transition-all duration-500 hover:shadow-glow hover:-translate-y-2 hover:border-red-500/30 ${isVisible ? `scroll-reveal revealed stagger-${Math.min(categoryIndex + 1, 4)}` : 'scroll-reveal'}`}
             >
-              <div className={`w-16 h-16 ${skill.color === 'blue' ? 'bg-gradient-to-br from-blue-500/20 to-cyan-600/10' : 'bg-gradient-to-br from-red-500/20 to-crimson-600/10'} rounded-xl flex items-center justify-center group-hover:shadow-glow transition-all duration-300 group-hover:scale-125`}>
-                <skill.icon className={`${skill.color === 'blue' ? 'text-blue-500 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]' : 'text-red-500 group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]'} transition-all duration-300`} size={32} />
+              <h3 className="text-2xl font-bold text-white mb-6 text-center group-hover:text-red-400 transition-colors duration-300">
+                {category.title}
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {category.skills.map((skill, skillIndex) => (
+                  <div
+                    key={skillIndex}
+                    className="group/skill glass-card rounded-xl p-4 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-red-500/10"
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-br from-red-500/20 to-crimson-600/10 rounded-lg flex items-center justify-center group-hover/skill:shadow-glow transition-all duration-300">
+                      <skill.icon className="text-red-500 group-hover/skill:drop-shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-all duration-300" size={24} />
+                    </div>
+                    <span className="text-gray-300 font-medium text-sm text-center group-hover/skill:text-white transition-colors duration-300">
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
               </div>
-              <span className="text-white font-semibold text-center">{skill.name}</span>
             </div>
           ))}
         </div>

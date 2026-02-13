@@ -7,7 +7,7 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const navLinks = ['Home', 'Services', 'Skills', 'Projects', 'Resume', 'Contact'];
+  const navLinks = ['Home', 'Services', 'Skills', 'Achievements', 'Projects', 'Resume', 'Contact'];
 
   const handleNavigation = (section: string) => {
     // If not on home page, navigate home first then scroll
@@ -43,14 +43,25 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <button
-                key={link}
-                onClick={() => handleNavigation(link)}
-                className="text-gray-300 hover:text-red-500 transition-all duration-300 font-semibold relative group"
-              >
-                {link}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-crimson-600 group-hover:w-full transition-all duration-300"></span>
-              </button>
+              link === 'Achievements' ? (
+                <Link
+                  key={link}
+                  to="/achievements"
+                  className="text-gray-300 hover:text-red-500 transition-all duration-300 font-semibold relative group"
+                >
+                  {link}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-crimson-600 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              ) : (
+                <button
+                  key={link}
+                  onClick={() => handleNavigation(link)}
+                  className="text-gray-300 hover:text-red-500 transition-all duration-300 font-semibold relative group"
+                >
+                  {link}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-crimson-600 group-hover:w-full transition-all duration-300"></span>
+                </button>
+              )
             ))}
           </div>
 
@@ -65,13 +76,24 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 animate-fade-in-up">
             {navLinks.map((link) => (
-              <button
-                key={link}
-                onClick={() => handleNavigation(link)}
-                className="block w-full text-left text-gray-300 hover:text-red-500 transition-colors duration-300 font-semibold py-2"
-              >
-                {link}
-              </button>
+              link === 'Achievements' ? (
+                <Link
+                  key={link}
+                  to="/achievements"
+                  className="block w-full text-left text-gray-300 hover:text-red-500 transition-colors duration-300 font-semibold py-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link}
+                </Link>
+              ) : (
+                <button
+                  key={link}
+                  onClick={() => handleNavigation(link)}
+                  className="block w-full text-left text-gray-300 hover:text-red-500 transition-colors duration-300 font-semibold py-2"
+                >
+                  {link}
+                </button>
+              )
             ))}
           </div>
         )}
