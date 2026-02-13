@@ -10,25 +10,39 @@ export default function Navbar() {
   const navLinks = ['Home', 'Services', 'Skills', 'Achievements', 'Projects', 'Resume', 'Contact'];
 
   const handleNavigation = (section: string) => {
+    // Handle page navigation for Achievements
+    if (section === 'Achievements') {
+      navigate('/achievements');
+      setIsOpen(false);
+      return;
+    }
+
     // If not on home page, navigate home first then scroll
     if (location.pathname !== '/') {
       navigate('/');
-      // Wait for navigation, then scroll
+      // Wait for navigation, then scroll with proper offset
       setTimeout(() => {
-        const element = document.getElementById(section.toLowerCase());
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+        scrollToSection(section.toLowerCase());
+      }, 150);
       setIsOpen(false);
       return;
     }
 
     // Regular scroll behavior for home page sections
-    const element = document.getElementById(section.toLowerCase());
+    scrollToSection(section.toLowerCase());
+    setIsOpen(false);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
+      const navbarHeight = 80; // Approximate navbar height
+      const offsetTop = element.offsetTop - navbarHeight - 20; // Extra padding
+
+      window.scrollTo({
+        top: Math.max(0, offsetTop), // Ensure we don't scroll to negative
+        behavior: 'smooth'
+      });
     }
   };
 

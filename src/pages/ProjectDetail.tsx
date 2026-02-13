@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { projectsData } from '../data/projectsData';
 import { ArrowLeft, ExternalLink, Github, Check, ArrowRight } from 'lucide-react';
+import LazyImage from '../components/LazyImage';
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
@@ -96,10 +97,11 @@ export default function ProjectDetail() {
           <div className="md:col-span-1">
             <div className="sticky top-20 space-y-4">
               <div className="relative rounded-2xl overflow-hidden h-80 md:h-96 glass-card-premium shadow-2xl">
-                <img
+                <LazyImage
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
+                  onLoad={() => {}}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
               </div>
@@ -147,10 +149,11 @@ export default function ProjectDetail() {
                   className="group relative rounded-2xl overflow-hidden glass-card glass-card-hover shadow-glass hover:shadow-glow transition-all duration-300 hover:-translate-y-2"
                 >
                   <div className="h-48 bg-gray-800/30 flex items-center justify-center relative overflow-hidden">
-                    <img
+                    <LazyImage
                       src={relatedProject.image}
                       alt={relatedProject.title}
-                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                      className="transition-transform duration-700 group-hover:scale-110"
+                      onLoad={() => {}}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-red-900/50 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>

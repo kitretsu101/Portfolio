@@ -11,6 +11,9 @@ import Contact from './components/Contact';
 import AllProjects from './pages/AllProjects';
 import ProjectDetail from './pages/ProjectDetail';
 import Achievements from './pages/Achievements';
+import ScrollToTop from './components/ScrollToTop';
+import PageTransition from './components/PageTransition';
+import { usePageLoadPerformance } from './hooks/usePerformance';
 
 function HomePage() {
   return (
@@ -39,13 +42,32 @@ function HomePage() {
 }
 
 function App() {
+  usePageLoadPerformance();
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <ScrollToTop />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/projects" element={<AllProjects />} />
-        <Route path="/project/:id" element={<ProjectDetail />} />
-        <Route path="/achievements" element={<Achievements />} />
+        <Route path="/" element={
+          <PageTransition>
+            <HomePage />
+          </PageTransition>
+        } />
+        <Route path="/projects" element={
+          <PageTransition>
+            <AllProjects />
+          </PageTransition>
+        } />
+        <Route path="/project/:id" element={
+          <PageTransition>
+            <ProjectDetail />
+          </PageTransition>
+        } />
+        <Route path="/achievements" element={
+          <PageTransition>
+            <Achievements />
+          </PageTransition>
+        } />
       </Routes>
     </div>
   );

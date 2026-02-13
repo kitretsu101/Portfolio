@@ -1,5 +1,5 @@
 import { ArrowLeft, Trophy, Award, Medal, Star } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
 const achievements = [
@@ -61,7 +61,8 @@ const achievements = [
 
 export default function Achievements() {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -83,6 +84,23 @@ export default function Achievements() {
       }
     };
   }, []);
+
+  const handleGetInTouch = () => {
+    navigate('/');
+    // Wait for navigation and scroll to contact section
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        const navbarHeight = 80; // Approximate navbar height
+        const offsetTop = contactSection.offsetTop - navbarHeight;
+
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  };
 
   return (
     <div ref={sectionRef} className="min-h-screen bg-gray-950 text-white">
@@ -143,12 +161,12 @@ export default function Achievements() {
           <p className="text-gray-400 mb-6">
             These achievements represent my commitment to continuous learning and professional growth.
           </p>
-          <Link
-            to="/"
+          <button
+            onClick={handleGetInTouch}
             className="inline-flex items-center gap-2 px-10 py-5 rounded-xl bg-gradient-to-r from-red-500 to-crimson-600 text-white font-bold text-lg hover:shadow-glow-lg transition-all duration-300 hover:scale-105"
           >
             Get In Touch
-          </Link>
+          </button>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { ExternalLink, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Project } from '../data/projectsData';
+import LazyImage from './LazyImage';
 
 interface ProjectCardProps {
     project: Project;
@@ -13,14 +14,16 @@ export default function ProjectCard({ project, onImageClick, showButtons = true 
         <article
             className="group relative rounded-2xl overflow-hidden glass-card glass-card-hover shadow-glass hover:shadow-glow transition-all duration-300 hover:-translate-y-2"
         >
-            <div className="h-56 md:h-64 bg-gray-800/30 flex items-center justify-center relative overflow-hidden">
-                <img
+            <div className="h-56 md:h-64 bg-gray-800/30 flex items-center justify-center relative overflow-hidden cursor-pointer" onClick={() => onImageClick?.(project.image)}>
+                <LazyImage
                     src={project.image}
                     alt={project.title}
-                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 cursor-pointer"
-                    onClick={() => onImageClick?.(project.image)}
+                    className="transition-transform duration-700 group-hover:scale-110"
+                    onLoad={() => {}}
                 />
                 {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
 

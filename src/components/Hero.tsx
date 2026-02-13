@@ -4,11 +4,19 @@ const CV_FILE = new URL('../../Professional CV Resume.jpg', import.meta.url).hre
 import { Download, MessageCircle } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import profileImage from '../assets/whatsapp_image_2025-12-12_at_00.00.48_7dc7767b.jpg';
+import { useFontPreloader, preloadCriticalResources } from '../hooks/usePreloader';
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isNearButton, setIsNearButton] = useState(false);
+
+  // Preload critical resources for better performance
+  useFontPreloader();
+
+  useEffect(() => {
+    preloadCriticalResources();
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {

@@ -2,8 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance Optimizations */
 * {
+  /* Custom smooth scrolling with optimized duration */
   scroll-behavior: smooth;
+  /* Enable hardware acceleration for smoother animations */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize font loading and rendering */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 800;
+}
+
+/* Enhanced smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Account for fixed navbar */
+}
+
+/* Custom smooth scroll timing */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Smooth scroll for all elements */
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Performance optimizations for images */
+img {
+  /* Prevent layout shift */
+  max-width: 100%;
+  height: auto;
+  /* Optimize rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Optimize animations */
+.animate-fade-in,
+.animate-page-transition {
+  will-change: opacity, transform;
+}
+
+/* Reduce paint on scroll */
+.scroll-reveal {
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed {
+  will-change: auto;
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .animate-glow-pulse,
+  .animate-ring-pulse,
+  .animate-double-ring-pulse {
+    animation-duration: 3s; /* Slower animations for battery life */
+  }
+
+  /* Optimize backdrop filters for mobile */
+  .glass-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Reduce shadow complexity */
+  .shadow-glow,
+  .shadow-glow-lg {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+  }
+}
+
+/* Prevent layout shift for lazy loaded images */
+.lazy-image-container {
+  aspect-ratio: 16 / 9; /* Default aspect ratio */
+  background: #1a1a1a;
+}
+
+/* Optimize for high DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    scroll-behavior: auto;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize font loading */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-display: swap;
 }
 
 body {
@@ -16,6 +128,39 @@ body {
   background-attachment: fixed;
   position: relative;
   overflow-x: hidden;
+  /* Optimize rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  body {
+    /* Reduce background complexity on mobile for better performance */
+    background-attachment: scroll;
+  }
+
+  /* Reduce motion for better battery life on mobile */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Optimize images for different screen densities */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* High DPI optimizations */
+  .glass-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 }
 
 /* Flowing Abstract Curves Background */
@@ -206,8 +351,23 @@ body::before {
   }
 }
 
+@keyframes page-transition {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-fade-in {
-  animation: fade-in 1s ease-out;
+  animation: fade-in 0.8s ease-out;
+}
+
+.animate-page-transition {
+  animation: page-transition 0.5s ease-out;
 }
 
 .animate-fade-in-up {
@@ -216,10 +376,6 @@ body::before {
 
 .animate-glow-pulse {
   animation: glow-pulse 2s ease-in-out infinite;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.5s ease-out forwards;
 }
 
 .animate-ring-pulse {

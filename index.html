@@ -4,11 +4,49 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Performance optimizations -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <title>Plabon Barua</title>
-    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/index.css" as="style">
+    <link rel="modulepreload" href="/src/main.tsx">
+    <link rel="modulepreload" href="/src/App.tsx">
+
+    <!-- Preload hero fonts for better LCP -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <!-- Resource hints for performance -->
+    <meta name="resource-hints" content="dns-prefetch preconnect preload">
+
+    <!-- Disable automatic zoom on input focus for iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
+    <title>Plabon Barua - Full Stack Developer</title>
+
+    <!-- SEO and Social Media -->
+    <meta name="description" content="Portfolio of Plabon Barua - Full Stack Developer specializing in React, Node.js, and modern web technologies.">
+    <meta name="keywords" content="full stack developer, react, node.js, portfolio, web development">
+    <meta name="author" content="Plabon Barua">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Plabon Barua - Full Stack Developer">
+    <meta property="og:description" content="Portfolio showcasing modern web development projects and skills.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://plabonbarua.dev">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Plabon Barua - Full Stack Developer">
+    <meta name="twitter:description" content="Portfolio showcasing modern web development projects and skills.">
+
+    <!-- Performance hints -->
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="color-scheme" content="dark">
   </head>
   <body>
     <div id="root"></div>
