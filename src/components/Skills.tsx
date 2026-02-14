@@ -8,6 +8,8 @@ const skillCategories = [
       { name: 'JavaScript', icon: FileCode },
       { name: 'C++', icon: Code2 },
       { name: 'Python', icon: Coffee },
+      { name: 'C', icon: Code2 },
+      { name: 'java', icon: FileCode },
     ],
   },
   {
@@ -15,6 +17,7 @@ const skillCategories = [
     skills: [
       { name: 'React', icon: Code2 },
       { name: 'Node.js', icon: Braces },
+      { name: 'Tailwind CSS', icon: Code2 },
     ],
   },
   {
@@ -23,6 +26,7 @@ const skillCategories = [
       { name: 'MongoDB', icon: Database },
       { name: 'MySQL', icon: Database },
       { name: 'Firebase', icon: Zap },
+      { name: 'SQLite', icon: Database },
     ],
   },
   {
