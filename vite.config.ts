@@ -10,13 +10,19 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          icons: ['lucide-react'],
-          ui: ['lucide-react'], // Additional chunking for better caching
-        },
-      },
+        manualChunks(id) {
+          if (!id) return;
+          if (id.includes('node_modules')) {
+            const pkg = packageNameFromId(id);
+            if (!pkg) return;
+            if (pkg === 'lucide-react') return 'icons'; // force lucide-react into "icons"
+            // group other node_modules packages (optional)
+            if (pkg === 'react' || pkg.startsWith('react')) return 'react-vendor';
+            return 'vendor';
+          }
+          // keep app code default (or you can apply special logic)
+        }
+      }
     },
     minify: 'terser',
     terserOptions: {
