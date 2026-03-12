@@ -1,6 +1,19 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+/** Extract the bare package name from a node_modules file path. */
+function packageNameFromId(id: string): string | undefined {
+  const parts = id.split('node_modules/');
+  if (parts.length < 2) return undefined;
+  const segment = parts[parts.length - 1];
+  // Scoped packages: @scope/name
+  if (segment.startsWith('@')) {
+    const [scope, name] = segment.split('/');
+    return name ? `${scope}/${name}` : undefined;
+  }
+  return segment.split('/')[0];
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -23,17 +36,6 @@ export default defineConfig({
           // keep app code default (or you can apply special logic)
         }
       }
-    },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug'],
-      },
-      mangle: {
-        safari10: true,
-      },
     },
     cssMinify: true,
     reportCompressedSize: false,
