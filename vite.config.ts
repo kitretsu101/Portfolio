@@ -13,7 +13,7 @@ export default defineConfig({
         manualChunks(id) {
           if (!id) return;
           if (id.includes('node_modules')) {
-            const pkg = packageNameFromId(id);
+            const pkg = id.split('node_modules/')[1].split('/')[0].toString();
             if (!pkg) return;
             if (pkg === 'lucide-react') return 'icons'; // force lucide-react into "icons"
             // group other node_modules packages (optional)
@@ -24,17 +24,7 @@ export default defineConfig({
         }
       }
     },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug'],
-      },
-      mangle: {
-        safari10: true,
-      },
-    },
+    // Removed 'terser' specific settings for debugging
     cssMinify: true,
     reportCompressedSize: false,
     sourcemap: false, // Disable sourcemaps in production for smaller bundles
