@@ -50,7 +50,7 @@ export const projectsData: Project[] = [
         tags: ['Web', 'Hero', 'Interaction'],
         liveDemo: '#',
         sourceCode: '#',
-        featured: true,
+        featured: false,
         features: [
             'Dynamic Hero Section',
             'Smooth Animations',
@@ -69,7 +69,7 @@ export const projectsData: Project[] = [
         tags: ['Portfolio', 'Responsive', 'Branding'],
         liveDemo: '#',
         sourceCode: '#',
-        featured: true,
+        featured: false,
         features: [
             'Smooth Scrolling',
             'Project Showcase',
@@ -80,6 +80,45 @@ export const projectsData: Project[] = [
         ]
     },
 
+     
+    {
+        id: 4,
+        title: 'La Belle Maison - Hotel Website',
+        description: 'Luxury hotel booking website with elegant design and seamless reservation system',
+        fullDescription: 'La Belle Maison is a premium hotel website showcasing luxury hospitality. The platform features an elegant pink-themed design with high-quality imagery, room showcases, amenities, gallery, and a robust booking system. Built for an upscale hotel brand, it delivers a sophisticated user experience for travelers seeking luxury accommodations.',
+        image: resolveImage('project-hotel.png'),
+        tags: ['Web Development', 'UI/UX', 'E-Commerce', 'Responsive Design'],
+        liveDemo: '#',
+        sourceCode: '#',
+        featured: true,
+        features: [
+            'Room Showcase',
+            'Booking System',
+            'Amenities Display',
+            'Gallery Section',
+            'Reservation Management',
+            'Responsive Design'
+        ]
+    },
+    {
+        id: 5,
+        title: 'Revaan - E-Commerce Shop',
+        description: 'Premium menswear e-commerce platform featuring heritage fashion collections',
+        fullDescription: 'Revaan is an upscale e-commerce platform specializing in heritage menswear. The website showcases premium fashion collections with a tagline "Crafted for the Modern King." It features product browsing, collections exploration, and seamless shopping experience with elegant design and high-quality product imagery.',
+        image: resolveImage('project-revan.png'),
+        tags: ['E-Commerce', 'Web Development', 'UI/UX', 'Fashion'],
+        liveDemo: '#',
+        sourceCode: '#',
+        featured: true,
+        features: [
+            'Product Catalog',
+            'Collection Categories',
+            'Shopping Cart',
+            'Product Filters',
+            'Search Functionality',
+            'Premium Design'
+        ]
+    },
     {
         id: 6,
         title: 'E-learning App',
