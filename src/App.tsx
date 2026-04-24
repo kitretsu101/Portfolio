@@ -14,6 +14,7 @@ import Achievements from './pages/Achievements';
 import ScrollToTop from './components/ScrollToTop';
 import PageTransition from './components/PageTransition';
 import { usePageLoadPerformance } from './hooks/usePerformance';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function HomePage() {
   return (
@@ -69,6 +70,7 @@ function App() {
           </PageTransition>
         } />
       </Routes>
+      <WhatsAppButton />
     </div>
   );
 }
