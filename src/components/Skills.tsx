@@ -1,39 +1,87 @@
-import { Code2, Braces, Coffee, FileCode, Database, GitBranch, Box, Zap } from 'lucide-react';
+import { 
+  Code2, 
+  Braces, 
+  Coffee, 
+  FileCode, 
+  Database, 
+  GitBranch, 
+  Box, 
+  Zap, 
+  Atom, 
+  Hash, 
+  Wind, 
+  Layers, 
+  Cpu, 
+  Layout, 
+  Flame, 
+  Cloud, 
+  Key, 
+  Hammer, 
+  Figma, 
+  Image, 
+  Palette, 
+  Terminal, 
+  Smartphone, 
+  Globe, 
+  Server 
+} from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 const skillCategories = [
   {
     title: 'Programming Languages',
     skills: [
-      { name: 'JavaScript', icon: FileCode },
-      { name: 'C++', icon: Code2 },
-      { name: 'Python', icon: Coffee },
       { name: 'C', icon: Code2 },
-      { name: 'java', icon: FileCode },
+      { name: 'C#', icon: Hash },
+      { name: 'C++', icon: Code2 },
+      { name: 'HTML5', icon: FileCode },
+      { name: 'CSS3', icon: Palette },
+      { name: 'Java', icon: Coffee },
+      { name: 'JavaScript', icon: FileCode },
+      { name: 'Kotlin', icon: Smartphone },
+      { name: 'PHP', icon: Server },
+      { name: 'Python', icon: Terminal },
     ],
   },
   {
     title: 'Frameworks & Libraries',
     skills: [
-      { name: 'React', icon: Code2 },
+      { name: 'React', icon: Atom },
+      { name: 'React Native', icon: Smartphone },
+      { name: 'Next.js', icon: Layers },
       { name: 'Node.js', icon: Braces },
-      { name: 'Tailwind CSS', icon: Code2 },
+      { name: '.NET', icon: Cpu },
+      { name: 'Bootstrap', icon: Layout },
+      { name: 'Tailwind CSS', icon: Wind },
+      { name: 'Flutter', icon: Smartphone },
+      { name: 'WordPress', icon: Globe },
     ],
   },
   {
-    title: 'Databases',
+    title: 'Databases & Cloud Platforms',
     skills: [
       { name: 'MongoDB', icon: Database },
       { name: 'MySQL', icon: Database },
-      { name: 'Firebase', icon: Zap },
+      { name: 'PostgreSQL', icon: Database },
       { name: 'SQLite', icon: Database },
+      { name: 'Microsoft SQL Server', icon: Database },
+      { name: 'Firebase', icon: Flame },
+      { name: 'AWS', icon: Cloud },
+      { name: 'Vercel', icon: Zap },
+      { name: 'Netlify', icon: Globe },
     ],
   },
   {
-    title: 'Tools & Technologies',
+    title: 'Tools, Design & Systems',
     skills: [
       { name: 'Git', icon: GitBranch },
       { name: 'Docker', icon: Box },
+      { name: 'JWT', icon: Key },
+      { name: 'Apache', icon: Server },
+      { name: 'Apache Maven', icon: Hammer },
+      { name: 'Canva', icon: Image },
+      { name: 'Figma', icon: Figma },
+      { name: 'Adobe XD', icon: Palette },
     ],
   },
 ];
@@ -86,7 +134,7 @@ export default function Skills() {
               <h3 className="text-2xl font-bold text-white mb-6 text-center group-hover:text-red-400 transition-colors duration-300">
                 {category.title}
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
