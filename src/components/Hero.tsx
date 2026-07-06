@@ -65,8 +65,8 @@ export default function Hero() {
 
           <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
             Crafting robust, scalable solutions from database to interface.
-            Passionate about clean code, modern architectures, and delivering
-            exceptional user experiences.
+             Passionate about clean code,
+              modern architectures, and delivering exceptional user experiences.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
