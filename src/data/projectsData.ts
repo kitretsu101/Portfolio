@@ -19,16 +19,24 @@ const resolveImage = (filename: string) => {
     }
 };
 
+const placeholderImage = resolveImage('project-placeholder.svg');
+
+const createProject = (
+    project: Omit<Project, 'image' | 'liveDemo' | 'sourceCode'> & Partial<Pick<Project, 'image' | 'liveDemo' | 'sourceCode'>>
+): Project => ({
+    image: placeholderImage,
+    liveDemo: '#',
+    sourceCode: '#',
+    ...project,
+});
+
 export const projectsData: Project[] = [
-    {
+    createProject({
         id: 1,
         title: 'Medixa — Digital Hospital Management System',
         description: 'Laravel-based healthcare platform for patients, appointments, and doctor workflows',
         fullDescription: 'Built a full-stack hospital management platform handling patient records, appointment scheduling, and doctor-patient assignment using Laravel MVC architecture. The system also includes a relational MySQL schema designed for multi-role access and appointment workflows.',
-        image: resolveImage('project-placeholder.svg'),
         tags: ['Laravel', 'MySQL', 'Full-Stack', 'Healthcare'],
-        liveDemo: '#',
-        sourceCode: '#',
         featured: true,
         features: [
             'Patient record management',
@@ -38,16 +46,13 @@ export const projectsData: Project[] = [
             'Relational database design',
             'Workflow-driven operations'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 2,
         title: 'Club Portfolio Website',
         description: 'Responsive university club website with dynamic content and member registration',
         fullDescription: 'Developed a university club website with dynamic content management, event listings, and member registration using PHP and MySQL as the backend. The interface uses responsive layouts and interactive UI elements built with vanilla JavaScript.',
-        image: resolveImage('project-placeholder.svg'),
         tags: ['HTML', 'CSS', 'PHP', 'JavaScript'],
-        liveDemo: '#',
-        sourceCode: '#',
         featured: true,
         features: [
             'Dynamic content updates',
@@ -57,16 +62,14 @@ export const projectsData: Project[] = [
             'Interactive front-end elements',
             'PHP and MySQL backend'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 3,
         title: 'TechHive Studio — Tech Company Portfolio App',
         description: 'Cross-platform portfolio application for showcasing services, team, and projects',
         fullDescription: 'Designed and built a cross-platform company portfolio application showcasing services, team, and past projects using JavaFX for UI and Android Studio for development. The app uses reusable components for consistent branding across screens.',
-        image: resolveImage('project-placeholder.svg'),
+        image: resolveImage('project-techhive.jpg'),
         tags: ['Java', 'JavaFX', 'Android Studio', 'UI Design'],
-        liveDemo: '#',
-        sourceCode: '#',
         featured: true,
         features: [
             'Service showcase',
@@ -76,16 +79,13 @@ export const projectsData: Project[] = [
             'Cross-platform experience',
             'Consistent visual branding'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 4,
         title: 'Blind Stick — Smart Assistive Device (IoT)',
         description: 'ESP32-powered obstacle detection stick with real-time feedback for accessibility',
         fullDescription: 'Engineered a smart walking stick for visually impaired users, using ESP32 and multiple sensors to detect nearby obstacles in real time. The system implements buzzer and vibration feedback logic to alert users of obstacle distance, combining embedded systems with practical accessibility design.',
-        image: resolveImage('project-placeholder.svg'),
         tags: ['ESP32', 'Embedded C', 'IoT', 'Sensors'],
-        liveDemo: '#',
-        sourceCode: '#',
         featured: true,
         features: [
             'Obstacle detection',
@@ -95,17 +95,13 @@ export const projectsData: Project[] = [
             'Embedded systems implementation',
             'Practical user-focused logic'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 5,
         title: 'Shop Management System',
         description: 'Inventory and billing system built in C++ using OOP principles',
         fullDescription: 'Built a complete shop management solution for inventory, billing, and transaction handling using C++ and object-oriented programming concepts such as classes, inheritance, and polymorphism.',
-        image: resolveImage('project-placeholder.svg'),
         tags: ['C++', 'OOP', 'Software', 'Inventory'],
-        liveDemo: '#',
-        sourceCode: '#',
-        featured: false,
         features: [
             'Inventory tracking',
             'Billing workflow',
@@ -114,17 +110,13 @@ export const projectsData: Project[] = [
             'Object-oriented structure',
             'Scalable console-based system'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 6,
         title: 'Student Library Management System',
         description: 'Console-based library system with persistent file storage in C',
         fullDescription: 'Developed a console-based library management system in C using structs, file I/O, and preprocessor directives for persistent record management and data organization.',
-        image: resolveImage('project-placeholder.svg'),
         tags: ['C', 'File I/O', 'Data Structures', 'Console App'],
-        liveDemo: '#',
-        sourceCode: '#',
-        featured: false,
         features: [
             'Persistent record storage',
             'File-based data handling',
@@ -133,17 +125,13 @@ export const projectsData: Project[] = [
             'Efficient data organization',
             'Simple and reliable workflow'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 7,
         title: 'Digital Logic Gate Simulator',
         description: 'Visual simulator for AND, OR, NOT, NAND, NOR, and XOR logic gates',
         fullDescription: 'Created a digital logic simulator to visualize core logic gates and their truth tables, helping users better understand logical circuit behavior and design principles.',
-        image: resolveImage('project-placeholder.svg'),
         tags: ['Logic Design', 'Digital Systems', 'Simulation', 'Education'],
-        liveDemo: '#',
-        sourceCode: '#',
-        featured: false,
         features: [
             'Interactive gate simulation',
             'Truth table visualization',
@@ -152,17 +140,13 @@ export const projectsData: Project[] = [
             'Clear circuit representation',
             'Core digital concepts'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 8,
         title: 'Shop Card & Management System',
         description: 'Oracle-based relational database system for inventory and transactions',
         fullDescription: 'Designed a relational database solution in Oracle for inventory and transaction tracking, with SQL-based reporting and structured data management for business operations.',
-        image: resolveImage('project-placeholder.svg'),
         tags: ['Oracle', 'SQL', 'Database', 'Reporting'],
-        liveDemo: '#',
-        sourceCode: '#',
-        featured: false,
         features: [
             'Relational database design',
             'Inventory tracking',
@@ -171,17 +155,14 @@ export const projectsData: Project[] = [
             'Data integrity',
             'Structured business workflow'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 9,
         title: 'Personal Portfolio App',
         description: 'Java-based application for presenting resume, skills, and projects',
         fullDescription: 'Developed a Java-based application to present resume details, skills, and completed projects in an interactive and polished format.',
-        image: resolveImage('project-placeholder.svg'),
+        image: resolveImage('project-portfolio.jpg'),
         tags: ['Java', 'Desktop App', 'Portfolio', 'UI'],
-        liveDemo: '#',
-        sourceCode: '#',
-        featured: false,
         features: [
             'Interactive portfolio presentation',
             'Resume display',
@@ -190,17 +171,14 @@ export const projectsData: Project[] = [
             'Structured app layout',
             'Desktop-friendly experience'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 10,
         title: 'Branded Clothing E-Commerce Site',
         description: 'AI-assisted prototype featuring product catalog, cart, and responsive design',
         fullDescription: 'Created a branded clothing e-commerce prototype with a product catalog, cart experience, and responsive design, developed with AI-assisted rapid prototyping tools.',
-        image: resolveImage('project-placeholder.svg'),
+        image: resolveImage('project-revan.png'),
         tags: ['E-Commerce', 'Responsive', 'UI/UX', 'Prototype'],
-        liveDemo: '#',
-        sourceCode: '#',
-        featured: false,
         features: [
             'Product catalog',
             'Shopping cart experience',
@@ -209,17 +187,14 @@ export const projectsData: Project[] = [
             'Rapid prototype workflow',
             'Modern storefront feel'
         ]
-    },
-    {
+    }),
+    createProject({
         id: 11,
         title: 'Hotel Booking Website',
         description: 'Responsive booking experience built with AI-assisted development tools',
         fullDescription: 'Built a hotel booking website with a complete reservation flow and polished responsive UI, using AI-assisted development tools such as Lovable and Claude to accelerate delivery.',
-        image: resolveImage('project-placeholder.svg'),
+        image: resolveImage('project-hotel.png'),
         tags: ['Web Development', 'Booking', 'Responsive', 'AI-Assisted'],
-        liveDemo: '#',
-        sourceCode: '#',
-        featured: false,
         features: [
             'Booking flow',
             'Responsive design',
@@ -228,7 +203,7 @@ export const projectsData: Project[] = [
             'Fast prototyping',
             'Modern web experience'
         ]
-    }
+    })
 ];
 
 export const getFeaturedProjects = (): Project[] => {

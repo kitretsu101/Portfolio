@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '../components/Navbar';
-import ProjectCard from '../components/ProjectCard';
 import LazyImage from '../components/LazyImage';
 import { getAllProjects } from '../data/projectsData';
 
@@ -77,7 +76,6 @@ export default function AllProjects() {
                                         src={project.image}
                                         alt={project.title}
                                         className="transition-transform duration-700 group-hover:scale-110 cursor-pointer"
-                                        onLoad={() => {}}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-red-900/50 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>

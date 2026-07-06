@@ -7,7 +7,7 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const navLinks = ['Home', 'Services', 'Skills', 'Achievements', 'Projects', 'Resume', 'Contact'];
+  const navLinks = ['Home', 'Achievements', 'Projects', 'Resume', 'Contact'];
 
   const handleNavigation = (section: string) => {
     // Handle page navigation for Achievements
@@ -50,9 +50,14 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold group">
-            <span className="text-red-500 group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-all duration-300">PB</span>
-            <span className="text-white">.</span>
+          <Link to="/" className="text-3xl font-semibold group">
+            <span
+              className="text-red-500 group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-all duration-300"
+              style={{ fontFamily: 'Brush Script MT, Pacifico, cursive', letterSpacing: '-0.02em' }}
+            >
+              Plabon
+            </span>
+            <span className="inline-block w-2 h-2 rounded-full bg-red-500 ml-1 -translate-y-2" aria-hidden="true" />
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">

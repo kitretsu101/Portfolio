@@ -50,14 +50,6 @@ export default function LazyImage({
     onLoad?.();
   };
 
-  // Generate WebP version if possible (for future enhancement)
-  const getOptimizedSrc = (originalSrc: string) => {
-    // For now, return original - in production you'd convert to WebP
-    // This is a placeholder for future WebP conversion
-    return originalSrc;
-  };
-
-  // Add error boundary for better resilience
   const handleImageError = () => {
     console.warn('Image failed to load:', src);
     setHasError(true);
@@ -84,12 +76,6 @@ export default function LazyImage({
       {/* Actual image */}
       {isInView && !hasError && (
         <picture>
-          {/* WebP version (when available) */}
-          <source
-            srcSet={getOptimizedSrc(src)}
-            type="image/webp"
-          />
-          {/* Fallback */}
           <img
             src={src}
             alt={alt}

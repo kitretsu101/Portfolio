@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Project } from '../data/projectsData';
 import LazyImage from './LazyImage';
@@ -19,7 +19,6 @@ export default function ProjectCard({ project, onImageClick, showButtons = true 
                     src={project.image}
                     alt={project.title}
                     className="transition-transform duration-700 group-hover:scale-110"
-                    onLoad={() => {}}
                 />
                 {/* Gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

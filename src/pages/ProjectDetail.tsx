@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { projectsData } from '../data/projectsData';
-import { ArrowLeft, ExternalLink, Github, Check, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Check, ArrowRight } from 'lucide-react';
 import LazyImage from '../components/LazyImage';
 
 export default function ProjectDetail() {
+  const [openImage, setOpenImage] = useState<string | null>(null);
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const project = projectsData.find(p => p.id === parseInt(id || '0'));
@@ -101,8 +103,14 @@ export default function ProjectDetail() {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
-                  onLoad={() => {}}
                 />
+                <button
+                  type="button"
+                  onClick={() => setOpenImage(project.image)}
+                  className="absolute bottom-4 left-4 rounded-full bg-red-500/90 px-4 py-2 text-sm font-semibold text-white hover:bg-red-400 transition-colors duration-300 shadow-glow"
+                >
+                  View Full Image
+                </button>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
               </div>
               <div className="glass-card-premium rounded-2xl p-6">
@@ -135,6 +143,33 @@ export default function ProjectDetail() {
           </div>
         </div>
 
+        {/* Image preview modal */}
+        {openImage && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setOpenImage(null)}
+          >
+            <div
+              className="relative max-w-6xl w-full h-full md:h-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setOpenImage(null)}
+                className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-red-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-glow hover:bg-red-400 transition-colors duration-300"
+                aria-label="Close image preview"
+              >
+                ✕
+              </button>
+              <img
+                src={openImage}
+                alt="Full project preview"
+                className="w-full h-full md:rounded-3xl object-contain max-h-[90vh]"
+              />
+            </div>
+          </div>
+        )}
+
         {/* Related Projects Section */}
         <div className="border-t border-gray-800 pt-16">
           <h2 className="text-3xl font-bold mb-8">More Projects</h2>
@@ -153,7 +188,6 @@ export default function ProjectDetail() {
                       src={relatedProject.image}
                       alt={relatedProject.title}
                       className="transition-transform duration-700 group-hover:scale-110"
-                      onLoad={() => {}}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-red-900/50 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
