@@ -59,8 +59,8 @@ export default function AllProjects() {
                         <h1 className="text-5xl md:text-7xl font-extrabold mb-4">
                             All <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-crimson-600">Projects</span>
                         </h1>
-                        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                            A complete collection of my works — exploring design, development, and innovation
+                        <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+                            A complete collection of my completed work across web applications, software systems, embedded devices, and database-driven solutions.
                         </p>
                     </div>
 

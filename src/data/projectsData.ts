@@ -3,7 +3,7 @@ export interface Project {
     title: string;
     description: string;
     fullDescription: string;
-    image: string; // will be a resolved URL
+    image: string;
     tags: string[];
     liveDemo: string;
     sourceCode: string;
@@ -11,141 +11,230 @@ export interface Project {
     features: string[];
 }
 
-// Helper to resolve image filename (placed at repo root) to a URL usable by Vite
 const resolveImage = (filename: string) => {
     try {
         return new URL(`../../${filename}`, import.meta.url).href;
     } catch (e) {
-        return filename; // fallback: return as-is
+        return filename;
     }
 };
 
 export const projectsData: Project[] = [
-    // Featured Projects (shown on home page)
     {
         id: 1,
-        title: 'TechHive Studio Platform',
-        description: 'Tech Company portfolio',
-        fullDescription: 'TechHive Studio Platform is a comprehensive portfolio solution designed for tech companies to showcase their services, projects, and team expertise. Built with modern web technologies, it provides a professional and interactive experience for potential clients.',
-        image: resolveImage('project-techhive.jpg'),
-        tags: ['UI/UX', 'WEb Development', 'Front End', 'SQLite'],
+        title: 'Medixa — Digital Hospital Management System',
+        description: 'Laravel-based healthcare platform for patients, appointments, and doctor workflows',
+        fullDescription: 'Built a full-stack hospital management platform handling patient records, appointment scheduling, and doctor-patient assignment using Laravel MVC architecture. The system also includes a relational MySQL schema designed for multi-role access and appointment workflows.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['Laravel', 'MySQL', 'Full-Stack', 'Healthcare'],
         liveDemo: '#',
         sourceCode: '#',
         featured: true,
         features: [
-            'Responsive Design',
-            'Interactive Project Gallery',
-            'Team Showcase',
-            'Service Descriptions',
-            'Contact Forms',
-            'Performance Optimized'
+            'Patient record management',
+            'Appointment scheduling',
+            'Doctor-patient assignment',
+            'Role-based access control',
+            'Relational database design',
+            'Workflow-driven operations'
         ]
     },
     {
         id: 2,
-        title: 'Gaming Website Home Screen',
-        description: 'A bold, immersive hero design for a gaming product — rich visuals, strong typography and interaction-ready CTA.',
-        fullDescription: 'This gaming website features a cutting-edge hero design with stunning visuals and smooth interactions. The interface is crafted to engage gamers with dynamic animations, rich typography, and a compelling call-to-action that drives conversions. Perfect for gaming companies and esports platforms.',
-        image: resolveImage('project-gaming.jpg'),
-        tags: ['Web', 'Hero', 'Interaction'],
+        title: 'Club Portfolio Website',
+        description: 'Responsive university club website with dynamic content and member registration',
+        fullDescription: 'Developed a university club website with dynamic content management, event listings, and member registration using PHP and MySQL as the backend. The interface uses responsive layouts and interactive UI elements built with vanilla JavaScript.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['HTML', 'CSS', 'PHP', 'JavaScript'],
         liveDemo: '#',
         sourceCode: '#',
-        featured: false,
+        featured: true,
         features: [
-            'Dynamic Hero Section',
-            'Smooth Animations',
-            'Call-to-Action Buttons',
-            'Game Showcase Grid',
-            'Player Profiles',
-            'Tournament Rankings'
+            'Dynamic content updates',
+            'Event listings',
+            'Member registration flow',
+            'Responsive UI',
+            'Interactive front-end elements',
+            'PHP and MySQL backend'
         ]
     },
     {
         id: 3,
-        title: 'Personal Portfolio',
-        description: 'A modern portfolio landing page showcasing identity, services and contact — optimized for conversions.',
-        fullDescription: 'A sleek and modern personal portfolio designed to showcase your work, skills, and services. Built with conversion optimization in mind, this landing page features smooth scrolling, beautiful animations, and strategically placed CTAs to help you connect with potential clients and employers.',
-        image: resolveImage('project-portfolio.jpg'),
-        tags: ['Portfolio', 'Responsive', 'Branding'],
-        liveDemo: '#',
-        sourceCode: '#',
-        featured: false,
-        features: [
-            'Smooth Scrolling',
-            'Project Showcase',
-            'Skills Section',
-            'Contact Form',
-            'Dark Mode Ready',
-            'SEO Optimized'
-        ]
-    },
-
-     
-    {
-        id: 4,
-        title: 'La Belle Maison - Hotel Website',
-        description: 'Luxury hotel booking website with elegant design and seamless reservation system',
-        fullDescription: 'La Belle Maison is a premium hotel website showcasing luxury hospitality. The platform features an elegant pink-themed design with high-quality imagery, room showcases, amenities, gallery, and a robust booking system. Built for an upscale hotel brand, it delivers a sophisticated user experience for travelers seeking luxury accommodations.',
-        image: resolveImage('project-hotel.png'),
-        tags: ['Web Development', 'UI/UX', 'E-Commerce', 'Responsive Design'],
+        title: 'TechHive Studio — Tech Company Portfolio App',
+        description: 'Cross-platform portfolio application for showcasing services, team, and projects',
+        fullDescription: 'Designed and built a cross-platform company portfolio application showcasing services, team, and past projects using JavaFX for UI and Android Studio for development. The app uses reusable components for consistent branding across screens.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['Java', 'JavaFX', 'Android Studio', 'UI Design'],
         liveDemo: '#',
         sourceCode: '#',
         featured: true,
         features: [
-            'Room Showcase',
-            'Booking System',
-            'Amenities Display',
-            'Gallery Section',
-            'Reservation Management',
-            'Responsive Design'
+            'Service showcase',
+            'Team profile views',
+            'Project gallery',
+            'Reusable UI components',
+            'Cross-platform experience',
+            'Consistent visual branding'
+        ]
+    },
+    {
+        id: 4,
+        title: 'Blind Stick — Smart Assistive Device (IoT)',
+        description: 'ESP32-powered obstacle detection stick with real-time feedback for accessibility',
+        fullDescription: 'Engineered a smart walking stick for visually impaired users, using ESP32 and multiple sensors to detect nearby obstacles in real time. The system implements buzzer and vibration feedback logic to alert users of obstacle distance, combining embedded systems with practical accessibility design.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['ESP32', 'Embedded C', 'IoT', 'Sensors'],
+        liveDemo: '#',
+        sourceCode: '#',
+        featured: true,
+        features: [
+            'Obstacle detection',
+            'Real-time sensor feedback',
+            'Buzzer and vibration alerts',
+            'Accessible assistive design',
+            'Embedded systems implementation',
+            'Practical user-focused logic'
         ]
     },
     {
         id: 5,
-        title: 'Revaan - E-Commerce Shop',
-        description: 'Premium menswear e-commerce platform featuring heritage fashion collections',
-        fullDescription: 'Revaan is an upscale e-commerce platform specializing in heritage menswear. The website showcases premium fashion collections with a tagline "Crafted for the Modern King." It features product browsing, collections exploration, and seamless shopping experience with elegant design and high-quality product imagery.',
-        image: resolveImage('project-revan.png'),
-        tags: ['E-Commerce', 'Web Development', 'UI/UX', 'Fashion'],
-        liveDemo: '#',
-        sourceCode: '#',
-        featured: true,
-        features: [
-            'Product Catalog',
-            'Collection Categories',
-            'Shopping Cart',
-            'Product Filters',
-            'Search Functionality',
-            'Premium Design'
-        ]
-    },
-    {
-        id: 6,
-        title: 'E-learning App',
-        description: 'An app for BCS Students for their preparation by Exams andsd notes',
-        fullDescription: 'LeanInX is a comprehensive e-learning platform designed specifically for BCS (Bachelor of Computer Science) students. It provides study materials, practice exams, notes, and progress tracking features to help students prepare effectively for their examinations.',
-        image: resolveImage('project-leaninx.jpg'),
-        tags: ['UI/UX', 'Front End', 'Android App'],
+        title: 'Shop Management System',
+        description: 'Inventory and billing system built in C++ using OOP principles',
+        fullDescription: 'Built a complete shop management solution for inventory, billing, and transaction handling using C++ and object-oriented programming concepts such as classes, inheritance, and polymorphism.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['C++', 'OOP', 'Software', 'Inventory'],
         liveDemo: '#',
         sourceCode: '#',
         featured: false,
         features: [
-            'Study Materials',
-            'Practice Exams',
-            'Progress Tracking',
-            'Notes Section',
-            'Discussion Forums',
-            'Offline Access'
+            'Inventory tracking',
+            'Billing workflow',
+            'Transaction management',
+            'Reusable class design',
+            'Object-oriented structure',
+            'Scalable console-based system'
         ]
     },
+    {
+        id: 6,
+        title: 'Student Library Management System',
+        description: 'Console-based library system with persistent file storage in C',
+        fullDescription: 'Developed a console-based library management system in C using structs, file I/O, and preprocessor directives for persistent record management and data organization.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['C', 'File I/O', 'Data Structures', 'Console App'],
+        liveDemo: '#',
+        sourceCode: '#',
+        featured: false,
+        features: [
+            'Persistent record storage',
+            'File-based data handling',
+            'Library record management',
+            'Structured C implementation',
+            'Efficient data organization',
+            'Simple and reliable workflow'
+        ]
+    },
+    {
+        id: 7,
+        title: 'Digital Logic Gate Simulator',
+        description: 'Visual simulator for AND, OR, NOT, NAND, NOR, and XOR logic gates',
+        fullDescription: 'Created a digital logic simulator to visualize core logic gates and their truth tables, helping users better understand logical circuit behavior and design principles.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['Logic Design', 'Digital Systems', 'Simulation', 'Education'],
+        liveDemo: '#',
+        sourceCode: '#',
+        featured: false,
+        features: [
+            'Interactive gate simulation',
+            'Truth table visualization',
+            'Logic design fundamentals',
+            'Educational utility',
+            'Clear circuit representation',
+            'Core digital concepts'
+        ]
+    },
+    {
+        id: 8,
+        title: 'Shop Card & Management System',
+        description: 'Oracle-based relational database system for inventory and transactions',
+        fullDescription: 'Designed a relational database solution in Oracle for inventory and transaction tracking, with SQL-based reporting and structured data management for business operations.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['Oracle', 'SQL', 'Database', 'Reporting'],
+        liveDemo: '#',
+        sourceCode: '#',
+        featured: false,
+        features: [
+            'Relational database design',
+            'Inventory tracking',
+            'Transaction records',
+            'SQL-based reporting',
+            'Data integrity',
+            'Structured business workflow'
+        ]
+    },
+    {
+        id: 9,
+        title: 'Personal Portfolio App',
+        description: 'Java-based application for presenting resume, skills, and projects',
+        fullDescription: 'Developed a Java-based application to present resume details, skills, and completed projects in an interactive and polished format.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['Java', 'Desktop App', 'Portfolio', 'UI'],
+        liveDemo: '#',
+        sourceCode: '#',
+        featured: false,
+        features: [
+            'Interactive portfolio presentation',
+            'Resume display',
+            'Skills showcase',
+            'Project highlights',
+            'Structured app layout',
+            'Desktop-friendly experience'
+        ]
+    },
+    {
+        id: 10,
+        title: 'Branded Clothing E-Commerce Site',
+        description: 'AI-assisted prototype featuring product catalog, cart, and responsive design',
+        fullDescription: 'Created a branded clothing e-commerce prototype with a product catalog, cart experience, and responsive design, developed with AI-assisted rapid prototyping tools.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['E-Commerce', 'Responsive', 'UI/UX', 'Prototype'],
+        liveDemo: '#',
+        sourceCode: '#',
+        featured: false,
+        features: [
+            'Product catalog',
+            'Shopping cart experience',
+            'Responsive layout',
+            'Brand-focused design',
+            'Rapid prototype workflow',
+            'Modern storefront feel'
+        ]
+    },
+    {
+        id: 11,
+        title: 'Hotel Booking Website',
+        description: 'Responsive booking experience built with AI-assisted development tools',
+        fullDescription: 'Built a hotel booking website with a complete reservation flow and polished responsive UI, using AI-assisted development tools such as Lovable and Claude to accelerate delivery.',
+        image: resolveImage('project-placeholder.svg'),
+        tags: ['Web Development', 'Booking', 'Responsive', 'AI-Assisted'],
+        liveDemo: '#',
+        sourceCode: '#',
+        featured: false,
+        features: [
+            'Booking flow',
+            'Responsive design',
+            'Hotel showcase',
+            'User-friendly interface',
+            'Fast prototyping',
+            'Modern web experience'
+        ]
+    }
 ];
 
-// Helper function to get featured projects
 export const getFeaturedProjects = (): Project[] => {
     return projectsData.filter(project => project.featured);
 };
 
-// Helper function to get all projects
 export const getAllProjects = (): Project[] => {
     return projectsData;
 };

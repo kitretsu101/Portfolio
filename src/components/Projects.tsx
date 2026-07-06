@@ -31,8 +31,8 @@ export default function Projects() {
           <h2 className="text-4xl md:text-5xl font-extrabold mb-3">
             My <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-crimson-600">Projects</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            A selection of projects showing UI design and web work.
+          <p className="text-gray-400 max-w-3xl mx-auto">
+            A selection of completed projects spanning web development, software engineering, embedded systems, and database design.
           </p>
         </div>
 
