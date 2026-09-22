@@ -64,9 +64,14 @@ export default function Hero() {
           </div>
 
           <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
-            Crafting robust, scalable solutions from database to interface.
-             Passionate about clean code,
-              modern architectures, and delivering exceptional user experiences.
+            CSE, KUET, building as a 
+            full-stack developer with Laravel and React. 
+            I plan before I build: scoping ideas, designing 
+            databases and system architecture, and sequencing 
+            work into realistic phases — the same structured 
+            thinking I bring to organizing goals and events. 
+            Currently applying this to a full-stack SaaS project,
+             planned end-to-end from architecture to deployment and CI/CD.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
